@@ -2,12 +2,18 @@
 using tabuleiro;
 using chess;
 
+
 namespace ChessGame
 {
     class Program
     {
         static void Main(string[] args)
         {
+            PositionChess pos = new PositionChess('a', 1);
+            Console.WriteLine(pos);
+
+            Console.WriteLine(pos.toPosition());
+
             try
             {
                 Tabuleiro tab = new Tabuleiro(8, 8);
@@ -21,6 +27,8 @@ namespace ChessGame
             catch (TabuleiroException e) {
                 Console.WriteLine(e.Message);
             }
+
+
 
 
             Console.ReadLine();
