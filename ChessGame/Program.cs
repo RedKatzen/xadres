@@ -10,17 +10,16 @@ namespace ChessGame
         static void Main(string[] args)
         {
             PositionChess pos = new PositionChess('a', 1);
-            Console.WriteLine(pos);
-
-            Console.WriteLine(pos.toPosition());
 
             try
             {
                 Tabuleiro tab = new Tabuleiro(8, 8);
 
                 tab.colocarPeca(new Torre(tab, Cor.Preta), new Position(0, 0));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Position(1, 3));
+                tab.colocarPeca(new Torre(tab, Cor.Preta), new Position(0, 1));
                 tab.colocarPeca(new Rei(tab, Cor.Preta), new Position(2, 4));
+
+                tab.colocarPeca(new Torre(tab, Cor.Branca), new Position(3, 5));
 
                 Tela.imprimirTabuleiro(tab);
             }
