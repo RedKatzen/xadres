@@ -9,19 +9,22 @@ namespace ChessGame
     {
         static void Main(string[] args)
         {
-            PositionChess pos = new PositionChess('a', 1);
-
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Position(0, 0));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Position(0, 1));
-                tab.colocarPeca(new Rei(tab, Cor.Preta), new Position(2, 4));
+                while (!partida.terminada) {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
 
-                tab.colocarPeca(new Torre(tab, Cor.Branca), new Position(3, 5));
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Position origem = Tela.lerPositionChess().toPosition();
+                    Console.Write("Destino: ");
+                    Position destino = Tela.lerPositionChess().toPosition();
 
-                Tela.imprimirTabuleiro(tab);
+                    partida.executaMovimento(origem, destino);
+                }
             }
             catch (TabuleiroException e) {
                 Console.WriteLine(e.Message);
