@@ -13,13 +13,20 @@ namespace ChessGame
             {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                while (!partida.terminada) {
+                while(!partida.terminada) {
+
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab);
 
                     Console.WriteLine();
                     Console.Write("Origem: ");
                     Position origem = Tela.lerPositionChess().toPosition();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
                     Console.Write("Destino: ");
                     Position destino = Tela.lerPositionChess().toPosition();
 
@@ -29,9 +36,6 @@ namespace ChessGame
             catch (TabuleiroException e) {
                 Console.WriteLine(e.Message);
             }
-
-
-
 
             Console.ReadLine();
         }
